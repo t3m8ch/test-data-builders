@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DoterEntity} from "./doter.entity";
 
 @Component({
@@ -8,6 +8,7 @@ import {DoterEntity} from "./doter.entity";
 })
 export class DoterComponent implements OnInit {
   @Input() doter: DoterEntity | undefined;
+  @Output() delete = new EventEmitter();
 
   constructor() {
   }

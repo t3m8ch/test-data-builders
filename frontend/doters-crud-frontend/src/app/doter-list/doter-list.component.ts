@@ -12,13 +12,15 @@ export class DoterListComponent implements OnInit {
   isLoad: boolean = true;
 
   constructor(private doterListService: DoterListService) {
-    doterListService.getAllDoters().then(d => {
-      console.log(d)
-      this.doters = d
-      this.isLoad = false
-    })
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.doters = await this.doterListService.getAllDoters()
+    this.isLoad = false;
+  }
+
+  async onDelete(id: string) {
+    await this.doterListService.deleteById(id)
+    this.doters = this.doters.filter(d => d.id !== id)
   }
 }

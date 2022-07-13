@@ -10,4 +10,8 @@ export class DoterListService {
     const response = await axios.get("http://localhost:8080/doters")
     return response.data
   }
+
+  async deleteById(id: string) {
+    const response = await axios.delete(`http://localhost:8080/doters/${id}`)
+  }
 }

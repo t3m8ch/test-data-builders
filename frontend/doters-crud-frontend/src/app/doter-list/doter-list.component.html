@@ -3,5 +3,5 @@
 </div>
 
 <div *ngIf="!isLoad">
-  <app-doter *ngFor="let doter of doters" [doter]="doter" class="doter-card"></app-doter>
+  <app-doter *ngFor="let doter of doters" [doter]="doter" (delete)="onDelete(doter.id)" class="doter-card"></app-doter>
 </div>
