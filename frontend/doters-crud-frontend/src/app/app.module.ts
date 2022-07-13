@@ -10,6 +10,7 @@ import {MatCardModule} from "@angular/material/card";
 import { DoterListComponent } from './doter-list/doter-list.component';
 import { DoterComponent } from './doter/doter.component';
 import {MatListModule} from "@angular/material/list";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatListModule} from "@angular/material/list";
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,9 +9,14 @@ import {DoterListService} from "./doter-list.service";
 })
 export class DoterListComponent implements OnInit {
   doters: DoterEntity[] = [];
+  isLoad: boolean = true;
 
   constructor(private doterListService: DoterListService) {
-    doterListService.getAllDoters().then(d => this.doters = d)
+    doterListService.getAllDoters().then(d => {
+      console.log(d)
+      this.doters = d
+      this.isLoad = false
+    })
   }
 
   ngOnInit(): void {

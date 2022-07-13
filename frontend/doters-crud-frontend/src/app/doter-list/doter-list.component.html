@@ -1,1 +1,7 @@
-<app-doter *ngFor="let doter of doters" [doter]="doter" class="doter-card"></app-doter>
+<div *ngIf="isLoad" class="spinner">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoad">
+  <app-doter *ngFor="let doter of doters" [doter]="doter" class="doter-card"></app-doter>
+</div>
