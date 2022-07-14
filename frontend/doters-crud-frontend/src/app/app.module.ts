@@ -11,6 +11,7 @@ import { DoterListComponent } from './doter-list/doter-list.component';
 import { DoterComponent } from './doter/doter.component';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent, DoterListComponent, DoterComponent],
@@ -23,8 +24,18 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatCardModule,
     MatListModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+      },
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

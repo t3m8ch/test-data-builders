@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DoterEntity } from '../doter/doter.entity';
 import { DoterListService } from './doter-list.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-doter-list',
@@ -11,7 +12,7 @@ export class DoterListComponent implements OnInit {
   doters: DoterEntity[] = [];
   isLoad: boolean = true;
 
-  constructor(private doterListService: DoterListService) {}
+  constructor(private doterListService: DoterListService, private snackBar: MatSnackBar) {}
 
   async ngOnInit(): Promise<void> {
     this.doters = await this.doterListService.getAllDoters();
@@ -19,7 +20,14 @@ export class DoterListComponent implements OnInit {
   }
 
   async onDelete(id: string) {
-    await this.doterListService.deleteById(id);
+    try {
+      await this.doterListService.deleteById(id);
+    } catch (e) {
+      this.snackBar.open('Failed to delete doter');
+      throw e;
+    }
+
+    this.snackBar.open('Doter successfully deleted', 'Okay');
     this.doters = this.doters.filter((d) => d.id !== id);
   }
 }
