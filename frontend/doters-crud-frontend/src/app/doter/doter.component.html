@@ -1,14 +1,50 @@
 <mat-card *ngIf='doter' class='doter-card'>
-  <mat-card-title style='display: flex; justify-content: space-between; align-items: center'>
-    {{ doter.fullName }}
-    <button (click)='delete.emit()' mat-icon-button style='transform: scale(0.9)'>
-      <mat-icon>delete</mat-icon>
-    </button>
-  </mat-card-title>
-  <mat-card-content style='margin-top: 30px'>
-    <p><strong>Has mother</strong>: {{ doter.hasMother ? 'Yes' : 'No' }}</p>
-    <p><strong>Has mother</strong>: {{ doter.hasMother ? 'Yes' : 'No' }}</p>
-  </mat-card-content>
-  <mat-card-actions>
-  </mat-card-actions>
+  <ng-container *ngIf='currentState === "VIEW"'>
+    <mat-card-title style='display: flex; justify-content: space-between; align-items: center'>
+      {{ doter.fullName }}
+      <div>
+        <button (click)='delete.emit()' mat-icon-button style='transform: scale(0.9)'>
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button (click)='currentState = "EDIT"' mat-icon-button style='transform: scale(0.9)'>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+    </mat-card-title>
+    <mat-card-content style='margin-top: 30px'>
+      <p><strong>Has mother</strong>: {{ doter.hasMother ? 'Yes' : 'No' }}</p>
+      <p><strong>Has mother</strong>: {{ doter.hasMother ? 'Yes' : 'No' }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </ng-container>
+
+  <ng-container *ngIf='newDoter && currentState === "EDIT"'>
+    <mat-card-content style='display: flex; justify-content: space-between; font-size: 18px'>
+      <div>
+        <mat-form-field appearance='legacy' style='display: block'>
+          <mat-label>Full name</mat-label>
+          <input matInput placeholder='Vasya' type='text' [(ngModel)]='newDoter.fullName'>
+        </mat-form-field>
+        <mat-checkbox [(ngModel)]='newDoter.hasMother' style='display: block'>Has mother</mat-checkbox>
+        <mat-checkbox [(ngModel)]='newDoter.didMotherGoToCinema' style='display: block'>
+          Did mother go to cinema
+        </mat-checkbox>
+        <button mat-raised-button color='accent' style='margin-top: 1.25em' (click)='onUpdate()'>
+          Save
+        </button>
+      </div>
+      <div>
+        <button (click)='currentState = "VIEW"' mat-icon-button style='transform: scale(0.9)'>
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </ng-container>
+
+  <ng-container *ngIf='currentState === "LOADING"'>
+    <div style='display: flex; justify-content: center'>
+      <mat-spinner [diameter]='40'></mat-spinner>
+    </div>
+  </ng-container>
 </mat-card>

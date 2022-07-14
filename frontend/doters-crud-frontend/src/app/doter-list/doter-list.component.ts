@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DoterEntity } from '../doter/doter.entity';
-import { DoterListService } from './doter-list.service';
+import { DotersService } from '../services/doters.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -12,16 +12,16 @@ export class DoterListComponent implements OnInit {
   doters: DoterEntity[] = [];
   isLoad: boolean = true;
 
-  constructor(private doterListService: DoterListService, private snackBar: MatSnackBar) {}
+  constructor(private _dotersService: DotersService, private snackBar: MatSnackBar) {}
 
   async ngOnInit(): Promise<void> {
-    this.doters = await this.doterListService.getAllDoters();
+    this.doters = await this._dotersService.getAllDoters();
     this.isLoad = false;
   }
 
   async onDelete(id: string) {
     try {
-      await this.doterListService.deleteById(id);
+      await this._dotersService.deleteById(id);
     } catch (e) {
       this.snackBar.open('Failed to delete doter');
       throw e;

@@ -12,6 +12,9 @@ import { DoterComponent } from './doter/doter.component';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [AppComponent, DoterListComponent, DoterComponent],
@@ -25,6 +28,9 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/mater
     MatListModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
+    FormsModule,
+    MatInputModule,
+    MatCheckboxModule,
   ],
   providers: [
     {
