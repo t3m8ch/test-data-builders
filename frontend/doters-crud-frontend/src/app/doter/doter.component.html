@@ -1,13 +1,14 @@
 <mat-card *ngIf='doter' class='doter-card'>
-  <mat-card-title>{{ doter.fullName }}</mat-card-title>
+  <mat-card-title style='display: flex; justify-content: space-between; align-items: center'>
+    {{ doter.fullName }}
+    <button (click)='delete.emit()' mat-icon-button style='transform: scale(0.9)'>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-title>
   <mat-card-content style='margin-top: 30px'>
     <p><strong>Has mother</strong>: {{ doter.hasMother ? 'Yes' : 'No' }}</p>
     <p><strong>Has mother</strong>: {{ doter.hasMother ? 'Yes' : 'No' }}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button (click)='delete.emit()' mat-raised-button color='warn'>
-      <mat-icon>delete</mat-icon>
-      Delete
-    </button>
   </mat-card-actions>
 </mat-card>
