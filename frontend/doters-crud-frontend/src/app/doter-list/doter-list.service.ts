@@ -1,17 +1,17 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import axios from 'axios';
-import {DoterEntity} from "../doter/doter.entity";
+import { DoterEntity } from '../doter/doter.entity';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DoterListService {
   async getAllDoters(): Promise<DoterEntity[]> {
-    const response = await axios.get("http://localhost:8080/doters")
-    return response.data
+    const response = await axios.get('http://localhost:8080/doters');
+    return response.data;
   }
 
   async deleteById(id: string) {
-    const response = await axios.delete(`http://localhost:8080/doters/${id}`)
+    await axios.delete(`http://localhost:8080/doters/${id}`);
   }
 }

@@ -1,23 +1,19 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatIconModule} from "@angular/material/icon";
-import {MatButtonModule} from "@angular/material/button";
-import {MatCardModule} from "@angular/material/card";
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { DoterListComponent } from './doter-list/doter-list.component';
 import { DoterComponent } from './doter/doter.component';
-import {MatListModule} from "@angular/material/list";
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DoterListComponent,
-    DoterComponent,
-  ],
+  declarations: [AppComponent, DoterListComponent, DoterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -26,10 +22,9 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MatButtonModule,
     MatCardModule,
     MatListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
